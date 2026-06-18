@@ -1,0 +1,508 @@
+@import "tailwindcss";
+
+:root {
+  --color-primary: #1E40AF;
+  --color-primary-dark: #1E3A8A;
+  --color-primary-light: #3B82F6;
+  --color-navy: #0F172A;
+  --color-navy-light: #1E293B;
+  --color-light-gray: #F1F5F9;
+  --color-tech-gray: #64748B;
+  --color-gray-border: #E2E8F0;
+  --color-near-black: #0A0F1A;
+  --color-accent-blue: #60A5FA;
+  --color-accent-gold: #D4A853;
+  --background: #ffffff;
+  --foreground: #0F172A;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: #1E40AF;
+  --color-primary-dark: #1E3A8A;
+  --color-primary-light: #3B82F6;
+  --color-navy: #0F172A;
+  --color-navy-light: #1E293B;
+  --color-light-gray: #F1F5F9;
+  --color-tech-gray: #64748B;
+  --color-gray-border: #E2E8F0;
+  --color-near-black: #0A0F1A;
+  --color-accent-blue: #60A5FA;
+  --color-accent-gold: #D4A853;
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-sora);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Display font for section headings */
+.font-display {
+  font-family: var(--font-sora), var(--font-inter), system-ui, sans-serif;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #94A3B8;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #64748B;
+}
+
+/* ─── Animations ─── */
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes scroll-hint {
+  0%, 100% { transform: translateY(0); opacity: 0.6; }
+  50% { transform: translateY(8px); opacity: 1; }
+}
+
+@keyframes reveal-line {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes counter-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-scroll-hint {
+  animation: scroll-hint 2s ease-in-out infinite;
+}
+
+/* Stagger delays */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-600 { animation-delay: 0.6s; }
+.delay-700 { animation-delay: 0.7s; }
+
+/* ─── Intersection Observer animation triggers ─── */
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.animate-on-scroll-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-on-scroll-left.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.animate-on-scroll-right {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-on-scroll-right.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ─── Glass effects ─── */
+
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.glass-light {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* ─── Industrial section backgrounds ─── */
+
+/* Technical grid — dark sections */
+.grid-pattern {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Engineering blueprint grid — for Method section */
+.bg-blueprint {
+  background-color: #F8FAFC;
+  background-image:
+    linear-gradient(rgba(30, 64, 175, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(30, 64, 175, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* Fine technical grid — light sections */
+.bg-tech-grid {
+  background-color: #ffffff;
+  background-image:
+    linear-gradient(rgba(15, 23, 42, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.03) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Subtle radial glow — for Quality section */
+.bg-radial-glow {
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(30, 64, 175, 0.05) 0%, transparent 70%),
+              #ffffff;
+}
+
+/* Engineering dot grid — for Clients section */
+.bg-topo {
+  background-color: #F8FAFC;
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(15, 23, 42, 0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Cross pattern — for CaseStudies */
+.bg-crosshatch {
+  background-color: #F1F5F9;
+  background-image:
+    linear-gradient(rgba(30, 64, 175, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(30, 64, 175, 0.03) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+/* ─── Industrial microinteractions ─── */
+
+/* Animated underline — technical line from left */
+.hover-underline {
+  position: relative;
+}
+.hover-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: #1E40AF;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.hover-underline:hover::after,
+.group:hover .hover-underline::after {
+  transform: scaleX(1);
+}
+
+/* Section divider — technical line */
+.section-line-animated {
+  width: 48px;
+  height: 2px;
+  background: #1E40AF;
+  border-radius: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
+}
+.is-visible .section-line-animated,
+.is-visible ~ .section-line-animated {
+  transform: scaleX(1);
+}
+
+/* Card with precise technical lift */
+.card-premium {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
+  will-change: transform;
+}
+.card-premium:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px -8px rgba(15, 23, 42, 0.12);
+  border-color: rgba(30, 64, 175, 0.15);
+}
+
+/* Icon container with smooth fill */
+.icon-container {
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+}
+.icon-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #1E40AF;
+  transform: scale(0);
+  border-radius: inherit;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: -1;
+}
+.group:hover .icon-container::before {
+  transform: scale(1);
+}
+
+/* Tag pill with technical border */
+.tag-premium {
+  position: relative;
+  background: rgba(30, 64, 175, 0.08);
+  border: 1px solid rgba(30, 64, 175, 0.15);
+}
+
+/* Gradient text — blue only */
+.text-gradient {
+  background: linear-gradient(135deg, #1E40AF, #3B82F6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Section divider line (static) */
+.section-line {
+  width: 48px;
+  height: 2px;
+  background: #1E40AF;
+}
+
+/* Technical label — uppercase tracking */
+.label-technical {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #1E40AF;
+}
+
+/* Industrial border accent — left bar */
+.border-accent-left {
+  position: relative;
+}
+.border-accent-left::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: #1E40AF;
+  border-radius: 0 2px 2px 0;
+}
+
+/* Technical corner brackets — engineering drawing style */
+.tech-corners {
+  position: relative;
+}
+.tech-corners::before,
+.tech-corners::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-color: rgba(30, 64, 175, 0.25);
+  border-style: solid;
+  pointer-events: none;
+}
+.tech-corners::before {
+  top: -1px;
+  left: -1px;
+  border-width: 1px 0 0 1px;
+}
+.tech-corners::after {
+  bottom: -1px;
+  right: -1px;
+  border-width: 0 1px 1px 0;
+}
+
+/* Monospace technical reference label */
+.ref-label {
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  font-size: 0.625rem;
+  letter-spacing: 0.08em;
+  color: #94A3B8;
+}
+
+/* Technical section divider with label */
+.tech-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.tech-divider::before,
+.tech-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #E2E8F0 20%, #E2E8F0 80%, transparent);
+}
+
+/* Dark variant */
+.tech-divider-dark::before,
+.tech-divider-dark::after {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08) 20%, rgba(255,255,255,0.08) 80%, transparent);
+}
+
+/* Structured card — engineering report style */
+.card-technical {
+  border: 1px solid #E2E8F0;
+  border-radius: 4px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.card-technical:hover {
+  border-color: rgba(30, 64, 175, 0.3);
+  box-shadow: 0 8px 24px -6px rgba(15, 23, 42, 0.08);
+}
+
+/* Dark card variant */
+.card-technical-dark {
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 4px;
+  transition: border-color 0.3s ease;
+}
+.card-technical-dark:hover {
+  border-color: rgba(59, 130, 246, 0.2);
+}
+
+/* Measurement tick marks — horizontal ruler effect */
+.ruler-top {
+  position: relative;
+}
+.ruler-top::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 24px;
+  right: 24px;
+  height: 1px;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(30, 64, 175, 0.12) 0px,
+    rgba(30, 64, 175, 0.12) 2px,
+    transparent 2px,
+    transparent 12px
+  );
+}
+
+/* ─── Reduced motion ─── */
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-up,
+  .animate-fade-in,
+  .animate-slide-in-left,
+  .animate-slide-in-right,
+  .animate-float,
+  .animate-scroll-hint {
+    animation: none;
+  }
+  .animate-on-scroll,
+  .animate-on-scroll-left,
+  .animate-on-scroll-right {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .section-line-animated {
+    transform: scaleX(1);
+    transition: none;
+  }
+  .hover-underline::after {
+    transition: none;
+  }
+  .card-premium {
+    transition: none;
+  }
+  .icon-container::before {
+    transition: none;
+  }
+}
